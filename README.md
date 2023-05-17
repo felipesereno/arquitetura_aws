@@ -1,5 +1,5 @@
 # arquitetura_aws
-Este repositório contém a primeira atividade avaliativa do programa de estágio da Compass (PB 20/03/2023). Dentro da atividade proposta, o documeto a seguir é o que compreende a parte prática do exercício.
+Este repositório contém a primeira atividade avaliativa do programa de estágio da Compass (PB 20/03/2023). Dentro da atividade proposta, o documento a seguir é o que compreende a parte prática do exercício, envolvendo conhecimentos em infraestrutura da Amazon Web Services (AWS) e Linux.
 <h3>Requisitos do exercício</h3>
 <h5>Requisitos AWS:</h5>
 <ol>
@@ -27,6 +27,19 @@ Fazer a documentação explicando o processo de instalação do Linux.
 </ol>
 
 <h3>Execução dos requisitos do exercício</h3>
+<h5>Gerando uma chave pública na AWS:</h5>
+Este processo refere-se a geração de um par de chaves no serviço de instâncias da AWS e, neste caso, é realizado através da console web.<br>
+<ol>
+  No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
+  Na coluna esquerda, na sessão 'Redes e segurança', clique em 'Pares de chaves'.<br>
+  <img src="prints_documentacao/par_de_chaves.png"><br>
+  Para criar um par de chaves, clique no botão ('Criar par de chaves') com esta opção no canto superior direito da página.<br>
+  Atribua um nome, selecione o tipo de par de chaves, o formato do arquivo (.pem para OpenSSH e .ppk para uso com Putty) e uma tag (opcional).<br>
+  <img src="prints_documentacao/par_de_chaves1.png"><br>
+  Após finalizar a operação, salve o arquivo baixado em local seguro.
+</ol>
+
+
 <h5>Instalação do linux em uma máquina virtual:</h5>
 Este processo refere-se instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
 <ol>
@@ -44,5 +57,7 @@ Este processo refere-se instalação da distribuição Oracle Linux 8.7 (sem int
   Na interface gráfica de instalação, deve-se atentar a algumas configurações importantes, como linguagem do teclado (br), seleção do software (server), rede (seleção da interface caso a máquina conecte-se a internet), definição de senha para o root e criação de um usuário comum do sistema.<br>
   <img src="prints_documentacao/instalacao_linux1.png"><br>
   <img src="prints_documentacao/instalacao_linux2.png"><br>
-  Depois de revisar as configurações, clique em 'Begin Installation'.
+  Depois de revisar as configurações, clique em 'Begin Installation'.<br>
+  Finalizado o processo de instalação, clique em 'Reboot System'.<br>
+  <img src="prints_documentacao/instalacao_linux3.png"><br>
 </ol>
