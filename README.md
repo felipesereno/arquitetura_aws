@@ -1,5 +1,7 @@
 # arquitetura_aws
+
 Este repositório contém a primeira atividade avaliativa do programa de estágio da Compass (PB 20/03/2023). Dentro da atividade proposta, o documento a seguir é o que compreende a parte prática do exercício, envolvendo conhecimentos em infraestrutura da Amazon Web Services (AWS) e Linux.
+
 <h3>Requisitos do exercício</h3>
 <h5>Requisitos AWS:</h5>
 <ol>
@@ -27,6 +29,7 @@ Fazer a documentação explicando o processo de instalação do Linux.
 </ol>
 
 <h3>Execução dos requisitos do exercício</h3>
+
 <h5>Gerando uma chave pública na AWS:</h5>
 Este processo refere-se a geração de um par de chaves no serviço de instâncias da AWS e, neste caso, é realizado através da console web.<br>
 <ol>
@@ -39,6 +42,22 @@ Este processo refere-se a geração de um par de chaves no serviço de instânci
   Após finalizar a operação, salve o arquivo baixado em local seguro.
 </ol>
 
+<h5>Criação de uma instância EC2:</h5>
+Este processo refere-se à criação de uma instâncias EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
+16 GB SSD), neste caso, realizado através da console web.<br>
+<ol>
+  No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
+  Na coluna esquerda, na sessão 'Instâncias', clique em 'Instâncias'.<br>
+  <img src="prints_documentacao/criar_vm.png"><br>
+  Para criar uma nova instância, clique no botão 'Executar instâncias' no topo da página.<br>
+  Em 'Nome e tags', clique na opção 'Adicionar mais tags'. Para a tag com chave 'Name', insira o valor 'PB Senac'. Clique no botão 'Add new tag'. Insira, na segunda chave, o nome 'CostCenter', com o valor 'C092000004'. Clique no botão 'Add new tag'. Insira, na terceira chave, o nome 'Project', com o valor 'PB Senac'. Para as três chaves inseridas selecione os tipos de recursos 'Instâncias' e 'Volumes'.<br>
+  Na seleção das imagens da aplicação, selecione o grupo 'Amazon Linux', especificamente 'Amazon Linux 2 Kernel 5.10 AMI 2.0.20230504.1 x86_64 HVM gp2'. O ID dessa AMI (Amazon Image) deve ser: ami-06a0cd9728546d178.<br>
+  No 'Tipo de instância', selecione 't3.small'.<br>
+  Na sessão 'Par de chaves (login)', selecione o par de chaves criado anteriormente, ou gere um novo par para atribuir a essa instância.<br>
+  Na sessão 'Configurações de rede', marque a opção 'Criar grupo de segurança' e guarde o nome do grupo de segurança que será criado. Configurações específicas de rede para esse grupo serão feitas na documentação do próximo requisito.<br>
+  Na sessão 'Configurar armazenamento', selecione 16GB, tipo gp2 de volume raiz.<br>
+  Em 'Resumo', verifique as configurações selecionadas, certificando-se que o 'Número de instâncias' seja '1'. Clique no botão 'Executar instância'.<br>
+</ol>
 
 <h5>Instalação do linux em uma máquina virtual:</h5>
 Este processo refere-se instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
