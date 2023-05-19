@@ -31,7 +31,7 @@ Fazer a documentação explicando o processo de instalação do Linux.
 <h3>Execução dos requisitos do exercício</h3>
 
 <h5>Gerando uma chave pública na AWS:</h5>
-Este processo refere-se a geração de um par de chaves no serviço de instâncias da AWS e, neste caso, é realizado através da console web.<br>
+Este processo, refere-se a geração de um par de chaves no serviço de instâncias da AWS e, neste caso, é realizado através da console web.<br>
 <ol>
   No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   Na coluna esquerda, na sessão 'Redes e segurança', clique em 'Pares de chaves'.<br>
@@ -43,14 +43,14 @@ Este processo refere-se a geração de um par de chaves no serviço de instânci
 </ol>
 
 <h5>Criação de uma instância EC2:</h5>
-Este processo refere-se à criação de uma instâncias EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
+Este processo, refere-se à criação de uma instâncias EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
 16 GB SSD), neste caso, realizado através da console web.<br>
 <ol>
   No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   Na coluna esquerda, na sessão 'Instâncias', clique em 'Instâncias'.<br>
-  <img src="prints_documentacao/criar_vm.png"><br>
+  <img src="prints_documentacao/instancias.png"><br>
   Para criar uma nova instância, clique no botão 'Executar instâncias' no topo da página.<br>
-  Em 'Nome e tags', clique na opção 'Adicionar mais tags'. Para a tag com chave 'Name', insira o valor 'PB Senac'. Clique no botão 'Add new tag'. Insira, na segunda chave, o nome 'CostCenter', com o valor 'C092000004'. Clique no botão 'Add new tag'. Insira, na terceira chave, o nome 'Project', com o valor 'PB Senac'. Para as três chaves inseridas selecione os tipos de recursos 'Instâncias' e 'Volumes'.<br>
+  Em 'Nome e tags', adicione um nome para a instância e tags (opcional).<br>
   Na seleção das imagens da aplicação, selecione o grupo 'Amazon Linux', especificamente 'Amazon Linux 2 Kernel 5.10 AMI 2.0.20230504.1 x86_64 HVM gp2'. O ID dessa AMI (Amazon Image) deve ser: ami-06a0cd9728546d178.<br>
   No 'Tipo de instância', selecione 't3.small'.<br>
   Na sessão 'Par de chaves (login)', selecione o par de chaves criado anteriormente, ou gere um novo par para atribuir a essa instância.<br>
@@ -59,8 +59,21 @@ Este processo refere-se à criação de uma instâncias EC2 com o sistema operac
   Em 'Resumo', verifique as configurações selecionadas, certificando-se que o 'Número de instâncias' seja '1'. Clique no botão 'Executar instância'.<br>
 </ol>
 
+<h5>Gerar 1 elastic IP e anexar à instância EC2:</h5>
+
+<h5>Liberar as portas de comunicação para acesso público:</h5>
+Este processo, refere-se à configuração de regras de entrada no grupo de segurança criado anteriormente, neste caso, realizado através da console web. As regras de segurança são: 22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP.<br>
+<ol>
+  No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
+  Na coluna esquerda, na sessão 'Rede e segurança', clique em 'Security groups'.<br>
+  <img src="prints_documentacao/grupo_de_seguranca.png"><br>
+  Selecione o grupo de segurança criado anteriormente, clique no botão 'Ações' e 'Editar regras de entrada'.<br>
+  <img src="prints_documentacao/regras_entrada.png"><br>
+  
+</ol>
+
 <h5>Instalação do linux em uma máquina virtual:</h5>
-Este processo refere-se instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
+Este processo, refere-se instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
 <ol>
   Baixe e siga o processo de instalação do host para Windows do <a href="https://www.virtualbox.org/wiki/Downloads">Oracle VirtualBox 7.0</a>.<br>
   Baixe o arquivo ISO completo da distribuição <a href="https://yum.oracle.com/oracle-linux-isos.html">Oracle Linux 8.7</a>.<br>
