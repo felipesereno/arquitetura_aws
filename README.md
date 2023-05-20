@@ -4,34 +4,34 @@ Este repositório contém a primeira atividade avaliativa do programa de estági
 
 <h3>Requisitos do exercício</h3>
 <h5>Requisitos AWS:</h5>
-<ol>
-Gerar uma chave pública para acesso ao ambiente;<br>
-Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
+<ul>
+<li>Gerar uma chave pública para acesso ao ambiente;<br>
+<li>Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
 16 GB SSD);<br>
-Gerar 1 elastic IP e anexar à instância EC2;<br>
-Liberar as portas de comunicação para acesso público: (22/TCP, 111/TCP e UDP,
+<li>Gerar 1 elastic IP e anexar à instância EC2;<br>
+<li>Liberar as portas de comunicação para acesso público: (22/TCP, 111/TCP e UDP,
 2049/TCP/UDP, 80/TCP, 443/TCP).
-</ol>
+</ul>
 <h5>Requisitos no linux:</h5>
-<ol>
-Configurar o NFS entregue;<br>
-Criar um diretorio dentro do filesystem do NFS com seu nome;<br>
-Subir um apache no servidor - o apache deve estar online e rodando;<br>
-Criar um script que valide se o serviço esta online e envie o resultado da validação
+<ul>
+<li>Configurar o NFS entregue;<br>
+<li>Criar um diretorio dentro do filesystem do NFS com seu nome;<br>
+<li>Subir um apache no servidor - o apache deve estar online e rodando;<br>
+<li>Criar um script que valide se o serviço esta online e envie o resultado da validação
 para o seu diretorio no nfs;<br>
-O script deve conter - Data HORA + nome do serviço + Status + mensagem
+<li>O script deve conter - Data HORA + nome do serviço + Status + mensagem
 personalizada de ONLINE ou offline;<br>
-O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço
+<li>O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço
 OFFLINE;<br>
-Preparar a execução automatizada do script a cada 5 minutos;<br>
-Fazer o versionamento da atividade;<br>
-Fazer a documentação explicando o processo de instalação do Linux.
-</ol>
+<li>Preparar a execução automatizada do script a cada 5 minutos;<br>
+<li>Fazer o versionamento da atividade;<br>
+<li>Fazer a documentação explicando o processo de instalação do Linux.
+</ul>
 
 <h3>Execução dos requisitos do exercício</h3>
 
 <h5>Gerando uma chave pública na AWS:</h5>
-Este processo, refere-se a geração de um par de chaves no serviço de instâncias da AWS e, neste caso, é realizado através da console web.<br>
+Este processo refere-se a geração de um par de chaves no serviço de instâncias da AWS e, neste caso, é realizado através da console web.<br>
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'Pares de chaves'.<br>
@@ -43,7 +43,7 @@ Este processo, refere-se a geração de um par de chaves no serviço de instânc
 </ol>
 
 <h5>Criação de uma instância EC2:</h5>
-Este processo, refere-se à criação de uma instâncias EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
+Este processo refere-se à criação de uma instâncias EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
 16 GB SSD), neste caso, realizado através da console web.<br>
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
@@ -60,17 +60,28 @@ Este processo, refere-se à criação de uma instâncias EC2 com o sistema opera
 </ol>
 
 <h5>Gerar 1 elastic IP e anexar à instância EC2:</h5>
-
+Este processo refere-se à geração de um IP elástico e sua associação à uma intânstância EC2, neste caso, realizado através da console web.
+<ol>
+  <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
+  <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'IPs elásticos'.<br>
+  <img src="prints_documentacao/ip_elastico.png"><br>
+  <li>Clique no botão 'Alocar endereço IP elástico', marque a opção 'Conjunto de endereços IPv4 da Amazon' e clique em 'Alocar'.<br>
+  <li>Para associar o IP alocado à uma instância em execução selecione-o no painel de IPs, clique em 'Ações' e selecione a opção 'Associar endereço IP elástico'.<br>
+  <img src="prints_documentacao/associar_ip.png"><br>
+  <li>Selecione 'Instância' no 'Tipo de recurso', escolha a instância que terá o IP associado e clique em 'Associar'.
+  <img src="prints_documentacao/ip_instancia.png"><br>
+</ol>
 
 <h5>Liberar as portas de comunicação para acesso público:</h5>
-Este processo, refere-se à configuração de regras de entrada no grupo de segurança criado anteriormente, neste caso, realizado através da console web. As regras de segurança são: 22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP.<br>
+Este processo refere-se à configuração de regras de entrada no grupo de segurança criado anteriormente, neste caso, realizado através da console web. As regras de segurança são: 22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP.<br>
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Rede e segurança', clique em 'Security groups'.<br>
   <img src="prints_documentacao/grupo_de_seguranca.png"><br>
   <li>Selecione o grupo de segurança criado anteriormente, clique no botão 'Ações' e 'Editar regras de entrada'.<br>
   <img src="prints_documentacao/regras_entrada.png"><br>
-  <li>Clique em 'Adicionar regra' ao inserir os dados de cada linha da tabela abaixo.<br><br>
+  <li>Clique em 'Adicionar regra' ao inserir os dados de cada linha da tabela abaixo.<br>
+  <img src="prints_documentacao/regra_entrada1.png"><br><br>
   <table>
     <thead>
       <tr>
@@ -114,12 +125,12 @@ Este processo, refere-se à configuração de regras de entrada no grupo de segu
         <td>443</td>
         <td>Qualquer local-IPv4</td>
       </tr>
-   </table><br>
+   </table>
    <li>Após inseridas as 7 regras de entrada, clique em 'Salvar regras'.<br>
 </ol>
 
 <h5>Instalação do linux em uma máquina virtual:</h5>
-Este processo, refere-se instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
+Este processo refere-se instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
 <ol>
   <li>Baixe e siga o processo de instalação do host para Windows do <a href="https://www.virtualbox.org/wiki/Downloads">Oracle VirtualBox 7.0</a>.<br>
   <li>Baixe o arquivo ISO completo da distribuição <a href="https://yum.oracle.com/oracle-linux-isos.html">Oracle Linux 8.7</a>.<br>
