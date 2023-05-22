@@ -129,8 +129,21 @@ Este processo refere-se à configuração de regras de entrada no grupo de segur
    <li>Após inseridas as 7 regras de entrada, clique em 'Salvar regras'.<br>
 </ol>
 
-<h5>Criar um servidor Apache:</h5>
-Este processo refere-se à instalação de um servidor Apache na instância EC2 criada anteriormente. 
+<h5>Configurando um Network File System (NFS):</h5>
+Este processo refere-se à criação de um NFS na instância EC2 criada anteriormente e a configuração de um diretório a ser compartilhado.<br>
+<ol>
+  <li>No terminal Linux, utilize o comando <code>mkdir /home/ec2-user/nfs/</code> para criar o diretório a ser compartilhado, nesse caso, localizado na pasta <code>/ec2-user</code>.<br>
+  <li>Usando o comando <code>sudo yum update</code> atualize os pacotes instalados no sistema.<br>
+  <li>A instalação dos pacotes referentes ao NFS podem ser incluídos no sistema via: <code>sudo yum install nfs-utils</code>.<br>
+  <li>Para definir o diretório que será compartilhado, deve-se editar o arquivo <code>exports</code> no pasta <code>etc/</code> incluindo as informações: <caminho_do_diretorio_compartilhado> <ip_da_instancia>(rw,sync,no_subtree_check).<br>
+  <li>Use o comando <code>sudo systemctl restart nfs-server</code> para reiniciar o serviço.<br>
+  <li><code>systemctl status nfs</code> deve indicar que o serviço está ativo.<br>
+  <li>Para conferir quais diretórios estão sendo compartilhados verifique o retorno do comando <code>sudo exportfs -v</code>.<br>
+  <li>Por fim, para criar um diretório com o seu nome na pasta compartilhada, simplesmente execute o comando <code>mkdir /home/ec2-user/nfs/seu_nome/</code>.<br>
+</ol>
+
+<h5>Criando um servidor Apache:</h5>
+Este processo refere-se à instalação de um servidor Apache na instância EC2 criada anteriormente.<br>
 <ol>
   <li>No terminal Linux, execute o comando <code>sudo yum update</code> para atualizar os pacotes instalados no sistema.<br>
   <li>Instale os pacotes do Apache usando o comando <code>sudo yum install httpd</code>.<br>
