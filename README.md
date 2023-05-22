@@ -129,8 +129,18 @@ Este processo refere-se à configuração de regras de entrada no grupo de segur
    <li>Após inseridas as 7 regras de entrada, clique em 'Salvar regras'.<br>
 </ol>
 
+<h5>Criar um servidor Apache:</h5>
+Este processo refere-se à instalação de um servidor Apache na instância EC2 criada anteriormente. 
+<ol>
+  <li>No terminal Linux, execute o comando <code>sudo yum update</code> para atualizar os pacotes instalados no sistema.<br>
+  <li>Instale os pacotes do Apache usando o comando <code>sudo yum install httpd</code>.<br>
+  <li>Para iniciar o servidor digite <code>sudo systemctl start httpd</code>.<br>
+  <li>Para verificar se o serviço está ativo utiliza-se o comando <code>systemctl status httpd</code>. O status deve estar ativo.<br>
+  <li>Outra forma de verificar a disponibilidade do servidor é informando o endereço IP da instância na barra URL do navegador. Um site do Apache deve aparecer informando que o serviço está funcionando.<br>
+</ol>
+
 <h5>Instalação do linux em uma máquina virtual:</h5>
-Este processo refere-se instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
+Este processo refere-se à instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
 <ol>
   <li>Baixe e siga o processo de instalação do host para Windows do <a href="https://www.virtualbox.org/wiki/Downloads">Oracle VirtualBox 7.0</a>.<br>
   <li>Baixe o arquivo ISO completo da distribuição <a href="https://yum.oracle.com/oracle-linux-isos.html">Oracle Linux 8.7</a>.<br>
