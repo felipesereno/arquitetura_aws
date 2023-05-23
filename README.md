@@ -151,28 +151,22 @@ Este processo refere-se à instalação de um servidor Apache na instância EC2 
   <li>Para verificar se o serviço está ativo utiliza-se o comando <code>systemctl status httpd</code>. O status deve estar ativo.<br>
   <li>Outra forma de verificar a disponibilidade do servidor é informando o endereço IP da instância na barra URL do navegador. Um site do Apache deve aparecer informando que o serviço está funcionando.<br>
 </ol>
-    --------------------------------------------
+
 <h5>Script de verificação do status do serviço Apache:</h5>
 Este processo refere-se à criação de um 'shell script' que tem a função de automatizar a verificação do status do serviço Apache gerado anteriormente.<br>
 <ol>
-  <li>O arquivo <code>apache_status.sh</code>, contido nesse repositório, tem a função de verificar o status do serviço <code>httpd</code>(Apache)
+  <li>O arquivo <code>apache_status.sh</code>, contido nesse repositório, tem a função de verificar o status do serviço <code>httpd</code>(Apache) e armazenar mensagens de log no diretório <code>/nfs</code>.<br>
+  <li>O script possui a funcionalidade de criar os arquivos de log, caso ainda não existam, e adicionar a mensagem "Data-hora (fuso horário de São Paulo) + APACHE + ONLINE + SERVIDOR WEB ATIVO.", caso o serviço esteja ativo, e "Data-hora (fuso horário de São Paulo) + APACHE + OFFLINE + SERVIDOR WEB INATIVO.", caso contrário.<br>
 </ol>
     
-    
-<li>Criar um script que valide se o serviço esta online e envie o resultado da validação
-para o seu diretorio no nfs;<br>
-<li>O script deve conter - Data HORA + nome do serviço + Status + mensagem
-personalizada de ONLINE ou offline;<br>
-<li>O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço
-OFFLINE;<br>
-<li>Preparar a execução automatizada do script a cada 5 minutos;<br>
-    
-    
-    
-    
-    
-    
----------------------------------------------------------
+<h5>Preparar a execução automatizada do script a cada 5 minutos:</h5>
+Este processo refere-se à execução automatizada do <code>apache_status.sh</code> a cada 5 minutos.<br>
+<ol>
+  <li>Execute o comando <code>crontab -e</code> para abrir, em modo de edição, o arquivo que armazena os scripts de automatização do sistema.<br>
+  <li>Clique na letra <code>i</code> para ativar a função de inserção e adicione o comando: <code>*/5 * * * * /bin/bash <caminho_do_script></code>. Neste caso, o caminho do script é <code>/home/ec2-user/apache_status.sh</code>.<br>
+  <li>Execute o comando <code>sudo systemctl restart crond</code>, para reiniciar o serviço de automatização. Agora o script <code>apache_status.sh</code> deve ser executado a cada 5 minutos.<br>
+</ol>
+            
 <h5>Instalação do linux em uma máquina virtual:</h5>
 Este processo refere-se à instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
 <ol>
