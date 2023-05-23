@@ -35,10 +35,8 @@ Este processo refere-se a geração de um par de chaves no serviço de instânci
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'Pares de chaves'.<br>
-  <img src="prints_documentacao/par_de_chaves.png"><br>
   <li>Para criar um par de chaves, clique no botão ('Criar par de chaves') no canto superior direito da página.<br>
   <li>Atribua um nome, selecione o tipo de par de chaves, o formato do arquivo (.pem para OpenSSH e .ppk para uso com Putty) e uma tag (opcional).<br>
-  <img src="prints_documentacao/par_de_chaves1.png"><br>
   <li>Após finalizar a operação, salve o arquivo baixado em local seguro.
 </ol>
 
@@ -48,7 +46,6 @@ Este processo refere-se à criação de uma instâncias EC2 com o sistema operac
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Instâncias', clique em 'Instâncias'.<br>
-  <img src="prints_documentacao/instancias.png"><br>
   <li>Para criar uma nova instância, clique no botão 'Executar instâncias' no topo da página.<br>
   <li>Em 'Nome e tags', adicione um nome para a instância e tags (opcional).<br>
   <li>Na seleção das imagens da aplicação, selecione o grupo 'Amazon Linux', especificamente 'Amazon Linux 2 Kernel 5.10 AMI 2.0.20230504.1 x86_64 HVM gp2'. O ID dessa AMI (Amazon Image) deve ser: ami-06a0cd9728546d178.<br>
@@ -64,12 +61,9 @@ Este processo refere-se à geração de um IP elástico e sua associação à um
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'IPs elásticos'.<br>
-  <img src="prints_documentacao/ip_elastico.png"><br>
   <li>Clique no botão 'Alocar endereço IP elástico', marque a opção 'Conjunto de endereços IPv4 da Amazon' e clique em 'Alocar'.<br>
   <li>Para associar o IP alocado à uma instância em execução selecione-o no painel de IPs, clique em 'Ações' e selecione a opção 'Associar endereço IP elástico'.<br>
-  <img src="prints_documentacao/associar_ip.png"><br>
   <li>Selecione 'Instância' no 'Tipo de recurso', escolha a instância que terá o IP associado e clique em 'Associar'.
-  <img src="prints_documentacao/ip_instancia.png"><br>
 </ol>
 
 <h5>Liberar as portas de comunicação para acesso público:</h5>
@@ -77,11 +71,8 @@ Este processo refere-se à configuração de regras de entrada no grupo de segur
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Rede e segurança', clique em 'Security groups'.<br>
-  <img src="prints_documentacao/grupo_de_seguranca.png"><br>
   <li>Selecione o grupo de segurança criado anteriormente, clique no botão 'Ações' e 'Editar regras de entrada'.<br>
-  <img src="prints_documentacao/regras_entrada.png"><br>
   <li>Clique em 'Adicionar regra' ao inserir os dados de cada linha da tabela abaixo.<br>
-  <img src="prints_documentacao/regra_entrada1.png"><br><br>
   <table>
     <thead>
       <tr>
@@ -174,17 +165,11 @@ Este processo refere-se à instalação da distribuição Oracle Linux 8.7 (sem 
   <li>Baixe o arquivo ISO completo da distribuição <a href="https://yum.oracle.com/oracle-linux-isos.html">Oracle Linux 8.7</a>.<br>
   <li>No VirtualBox clique no ícone 'Novo'.<br>
   <li>Use o campo 'Nome' para nomear a máquina virtual, selecione a imagem ISO baixada e marque a opção 'Pular instalação desassistida' se for o único a utilizar a instância criada.<br>
-  <img src="prints_documentacao/criar_vm.png"><br>
   <li>Ao clicar em 'Próximo', selecione a quantidade de memória RAM e número de núcleos de processamento a serem utilizados. Recomenda-se, aproximadamente, 2MB e 1 núcleo de CPU.<br>
-  <img src="prints_documentacao/ram_cpu.png"><br>
   <li>Ao clicar em 'Próximo', selecione a quantidade de armazenamento em disco a ser utilizado. Recomenda-se 'Criar um novo disco rígido agora' e selecionar a opção padrão '20GB'.<br>
-  <img src="prints_documentacao/disco.png"><br>
   <li>Ao clicar em 'Próximo', revise as especificações realizadas e clique em 'Finalizar'.<br>
   <li>Para iniciar a máquina virtual criada, selecione-a na coluna a esquerda e clique no ícone 'Iniciar'.<br>
   <li>Na interface gráfica de instalação, deve-se atentar a algumas configurações importantes, como linguagem do teclado (br), seleção do software (server), rede (seleção da interface caso a máquina conecte-se a internet), definição de senha para o root e criação de um usuário comum do sistema.<br>
-  <img src="prints_documentacao/instalacao_linux1.png"><br>
-  <img src="prints_documentacao/instalacao_linux2.png"><br>
   <li>Depois de revisar as configurações, clique em 'Begin Installation'.<br>
   <li>Finalizado o processo de instalação, clique em 'Reboot System'.<br>
-  <img src="prints_documentacao/instalacao_linux3.png"><br>
 </ol>
