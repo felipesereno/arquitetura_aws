@@ -163,8 +163,8 @@ Este processo refere-se à criação de um 'shell script' que tem a função de 
 Este processo refere-se à execução automatizada do <code>apache_status.sh</code> a cada 5 minutos.<br>
 <ol>
   <li>Execute o comando <code>crontab -e</code> para abrir, em modo de edição, o arquivo que armazena os scripts de automatização do sistema.<br>
-  <li>Clique na letra <code>i</code> para ativar a função de inserção e adicione o comando: <code>*/5 * * * * /bin/bash <caminho_do_script></code>. Neste caso, o caminho do script é <code>/home/ec2-user/apache_status.sh</code>.<br>
-  <li>Execute o comando <code>sudo systemctl restart crond</code>, para reiniciar o serviço de automatização. Agora o script <code>apache_status.sh</code> deve ser executado a cada 5 minutos.<br>
+  <li>Clique na letra <code>i</code> para ativar a função de inserção e adicione o comando: <code>*/5 * * * * /bin/bash caminho_do_script.sh</code>. Neste caso, o caminho do script é <code>/home/ec2-user/apache_status.sh</code>.<br>
+  <li>Execute o comando <code>sudo systemctl restart crond</code>, para reiniciar o serviço de automatização. Agora o script <code>apache_status.sh</code> deve ser executado automaticamente a cada 5 minutos.<br>
 </ol>
             
 <h5>Instalação do linux em uma máquina virtual:</h5>
