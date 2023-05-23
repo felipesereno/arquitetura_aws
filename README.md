@@ -17,7 +17,7 @@ Este repositório contém a primeira atividade avaliativa do programa de estági
 <li>Configurar o NFS entregue;<br>
 <li>Criar um diretorio dentro do filesystem do NFS com seu nome;<br>
 <li>Subir um apache no servidor - o apache deve estar online e rodando;<br>
-<li>Criar um script que valide se o serviço esta online e envie o resultado da validação
+<li>Criar um script que valide se o serviço está online e envie o resultado da validação
 para o seu diretorio no nfs;<br>
 <li>O script deve conter - Data HORA + nome do serviço + Status + mensagem
 personalizada de ONLINE ou offline;<br>
@@ -36,7 +36,7 @@ Este processo refere-se a geração de um par de chaves no serviço de instânci
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'Pares de chaves'.<br>
   <img src="prints_documentacao/par_de_chaves.png"><br>
-  <li>Para criar um par de chaves, clique no botão ('Criar par de chaves') com esta opção no canto superior direito da página.<br>
+  <li>Para criar um par de chaves, clique no botão ('Criar par de chaves') no canto superior direito da página.<br>
   <li>Atribua um nome, selecione o tipo de par de chaves, o formato do arquivo (.pem para OpenSSH e .ppk para uso com Putty) e uma tag (opcional).<br>
   <img src="prints_documentacao/par_de_chaves1.png"><br>
   <li>Após finalizar a operação, salve o arquivo baixado em local seguro.
