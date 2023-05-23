@@ -54,7 +54,7 @@ Este processo refere-se à criação de uma instâncias EC2 com o sistema operac
   <li>Na seleção das imagens da aplicação, selecione o grupo 'Amazon Linux', especificamente 'Amazon Linux 2 Kernel 5.10 AMI 2.0.20230504.1 x86_64 HVM gp2'. O ID dessa AMI (Amazon Image) deve ser: ami-06a0cd9728546d178.<br>
   <li>No 'Tipo de instância', selecione 't3.small'.<br>
   <li>Na sessão 'Par de chaves (login)', selecione o par de chaves criado anteriormente, ou gere um novo par para atribuir a essa instância.<br>
-  <li>Na sessão 'Configurações de rede', marque a opção 'Criar grupo de segurança' e guarde o nome que será criado. Configurações específicas de rede para esse grupo serão feitas na documentação do próximo requisito.<br>
+  <li>Na sessão 'Configurações de rede', marque a opção 'Criar grupo de segurança' e guarde o nome que será criado. Configurações específicas de rede para esse grupo serão feitas no requisito 'Liberar as portas de comunicação para acesso público'.<br>
   <li>Na sessão 'Configurar armazenamento', selecione 16GB, tipo gp2 de volume raiz.<br>
   <li>Em 'Resumo', verifique as configurações selecionadas, certificando-se que o 'Número de instâncias' seja '1'. Clique no botão 'Executar instância'.<br>
 </ol>
