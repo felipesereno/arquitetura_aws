@@ -149,7 +149,7 @@ Este processo refere-se à instalação de um servidor Apache na instância EC2 
   <li>Instale os pacotes do Apache usando o comando <code>sudo yum install httpd</code>.<br>
   <li>Para iniciar o servidor digite <code>sudo systemctl start httpd</code>.<br>
   <li>Para verificar se o serviço está ativo utiliza-se o comando <code>systemctl status httpd</code>. O status deve estar ativo.<br>
-  <li>Outra forma de verificar a disponibilidade do servidor é informando o endereço IP da instância na barra URL do navegador. Um site do Apache deve aparecer informando que o serviço está funcionando.<br>
+  <li>Outra forma de verificar a disponibilidade do servidor é informando o endereço IP da instância na barra URL do navegador. Uma página de testes do Apache deve aparecer.<br>
 </ol>
 
 <h5>Script de verificação do status do serviço Apache:</h5>
