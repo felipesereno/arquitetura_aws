@@ -61,7 +61,7 @@ Este processo refere-se à geração de um IP elástico e sua associação à um
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'IPs elásticos'.<br>
-  <li>Clique no botão 'Alocar endereço IP elástico', marque a opção 'Conjunto de endereços IPv4 da Amazon' e clique em 'Alocar'.<br>
+  <li>Clique no botão 'Alocar endereço IP elástico', marque a opção 'Conjunto de endereços IPv4 da Amazon' e clique em 'Alocar'. Pode ser necessário espeficicar o grupo de borda de rede que deve ser a mesma região onde foi criada a instância.<br>
   <li>Para associar o IP alocado à uma instância em execução selecione-o no painel de IPs, clique em 'Ações' e selecione a opção 'Associar endereço IP elástico'.<br>
   <li>Selecione 'Instância' no 'Tipo de recurso', escolha a instância que terá o IP associado e clique em 'Associar'.
 </ol>
