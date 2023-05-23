@@ -7,7 +7,7 @@ current_date=$(TZ=America/Sao_Paulo date +"%d-%m-%Y %H:%M:%S")
 
 if systemctl is-active --quiet httpd; then
     echo "Serviço do Apache está ativo."
-    if [ ! -f "$online_file" ]; thenvim
+    if [ ! -f "$online_file" ]; then
         echo "Criando arquivo $online_file..."
         echo "[$current_date] + APACHE + ONLINE + SERVIDOR WEB ATIVO." > "$online_file"
     else
