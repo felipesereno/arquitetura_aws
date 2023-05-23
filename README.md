@@ -151,7 +151,28 @@ Este processo refere-se à instalação de um servidor Apache na instância EC2 
   <li>Para verificar se o serviço está ativo utiliza-se o comando <code>systemctl status httpd</code>. O status deve estar ativo.<br>
   <li>Outra forma de verificar a disponibilidade do servidor é informando o endereço IP da instância na barra URL do navegador. Um site do Apache deve aparecer informando que o serviço está funcionando.<br>
 </ol>
-
+    --------------------------------------------
+<h5>Script de verificação do status do serviço Apache:</h5>
+Este processo refere-se à criação de um 'shell script' que tem a função de automatizar a verificação do status do serviço Apache gerado anteriormente.<br>
+<ol>
+  <li>O arquivo <code>apache_status.sh</code>, contido nesse repositório, tem a função de verificar o status do serviço <code>httpd</code>(Apache)
+</ol>
+    
+    
+<li>Criar um script que valide se o serviço esta online e envie o resultado da validação
+para o seu diretorio no nfs;<br>
+<li>O script deve conter - Data HORA + nome do serviço + Status + mensagem
+personalizada de ONLINE ou offline;<br>
+<li>O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço
+OFFLINE;<br>
+<li>Preparar a execução automatizada do script a cada 5 minutos;<br>
+    
+    
+    
+    
+    
+    
+---------------------------------------------------------
 <h5>Instalação do linux em uma máquina virtual:</h5>
 Este processo refere-se à instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
 <ol>
