@@ -126,7 +126,7 @@ Este processo refere-se à criação de um NFS na instância EC2 criada anterior
   <li>No terminal Linux, utilize o comando <code>mkdir /home/ec2-user/nfs/</code> para criar o diretório a ser compartilhado, nesse caso, localizado na pasta <code>/ec2-user</code>.<br>
   <li>Usando o comando <code>sudo yum update</code> atualize os pacotes instalados no sistema.<br>
   <li>A instalação dos pacotes referentes ao NFS podem ser incluídos no sistema via: <code>sudo yum install nfs-utils</code>.<br>
-  <li>Para definir o diretório que será compartilhado, deve-se editar o arquivo <code>exports</code> no pasta <code>etc/</code> incluindo as informações: <caminho_do_diretorio_compartilhado> <ip_da_instancia>(rw,sync,no_subtree_check).<br>
+  <li>Para definir o diretório que será compartilhado, deve-se editar o arquivo <code>exports</code> no pasta <code>etc/</code> incluindo as informações: caminho_do_diretorio_compartilhado ip_da_instancia(rw,sync,no_subtree_check).<br>
   <li>Use o comando <code>sudo systemctl restart nfs-server</code> para reiniciar o serviço.<br>
   <li><code>systemctl status nfs</code> deve indicar que o serviço está ativo.<br>
   <li>Para conferir quais diretórios estão sendo compartilhados verifique o retorno do comando <code>sudo exportfs -v</code>.<br>
