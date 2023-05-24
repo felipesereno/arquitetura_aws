@@ -62,7 +62,7 @@ Este processo refere-se à criação de uma instância EC2 com o sistema operaci
 <li>Em um terminal linux, digite o comando <code>sudo yum update</code> para garantir que todos os pacotes do sistema estejam atualizados.<br>
 <li>Baixe a interface de linha de comando da AWS digitando <code>curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"</code>.<br>
 <li>Descompacte o arquivo baixado digitando <code>unzip awscliv2.zip</code>. Se o comando não funcionar, instale os pacotes correspondentes ao serviço unzip utilizando o comando <code>sudo yum install unzip</code>. Depois tente descompactar o arquivo novamente.<br>
-<il>Instale a CLI digitando o comando <code>sudo ./aws/install<code>.<br>
+<il>Instale a CLI digitando o comando <code>sudo ./aws/install</code>.<br>
 <li>Após a instalação, certifique-se que o sistema consegue identificar o programa adicionado com o comando <code>aws --v</code>. O retorno deve informar a versão de tudo o que foi instalado.<br>
 <li>Para efetuar o acesso aos serviços da AWS através da CLI, antes é necessário gerar uma chave pessoal, que deve, posteriormente, ser informada nas configurações da CLI. Como é necessário que se faça a atribuição de políticas de acesso para que o usuário, através de sua chave pessoal, execute os serviço, recomenda-se criar um grupo, atribuir políticas a ele e incluir esse usuário ao grupo.<br>
 <li>Na console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'IAM' (Identity and Access Management). O termo 'IAM' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
