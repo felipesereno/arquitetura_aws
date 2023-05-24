@@ -56,7 +56,7 @@ Este processo refere-se à criação de uma instância EC2 com o sistema operaci
   <li>Em 'Resumo', verifique as configurações selecionadas, certificando-se que o 'Número de instâncias' seja '1'. Clique no botão 'Executar instância'.<br>
 </ol>
 
-<h5>Criação de uma instância EC2 - AWS CLI</h5>
+<h5>Criação de uma instância EC2 - AWS CLI:</h5>
 Este processo refere-se à criação de uma instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small, 16 GB SSD). Para atender esse requisito, as seguintes etapas serão necessárias: configuração da interface de linha de comando (CLI) da AWS, geração de um usuário, de um grupo e configuração de suas políticas, criação de uma chave secreta para acesso à conta e, por fim, execução de uma instância EC2. 
 <ol>
 <li>Em um terminal linux, digite o comando <code>sudo yum update</code> para garantir que todos os pacotes do sistema estejam atualizados.<br>
@@ -100,7 +100,7 @@ Este processo refere-se à configuração de regras de entrada no grupo de segur
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na seção 'Rede e segurança', clique em 'Security groups'.<br>
   <li>Selecione o grupo de segurança criado anteriormente, clique no botão 'Ações' e 'Editar regras de entrada'.<br>
-  <li>Clique em 'Adicionar regra' ao inserir os dados de cada linha da tabela abaixo.<br>
+  <li>Clique em 'Adicionar regra' ao inserir os dados de cada linha da tabela abaixo.<br><br>
   <table>
     <thead>
       <tr>
