@@ -41,7 +41,7 @@ Este processo refere-se a geração de um par de chaves no serviço de instânci
 </ol>
 
 <h5>Criação de uma instância EC2:</h5>
-Este processo refere-se à criação de uma instâncias EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
+Este processo refere-se à criação de uma instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small,
 16 GB SSD), neste caso, realizado através da console web.<br>
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
