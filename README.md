@@ -173,8 +173,8 @@ Este processo refere-se à criação de um NFS na instância EC2 executada anter
   <li>Na seção ‘Destinos de montagem’, troque o grupo de segurança para o mesmo utilizado pela instância, para todas as zonas de disponibilidade listadas. Clique em ‘Salvar’.<br> 
   <li>Ainda na página de informações do NFS criado, clique em ‘Anexar’.<br>
   <li>Com a opção ‘Montar via DNS’ selecionada, copie o comando que aparece na seção ‘Usando o cliente do NFS:’. Um exemplo desse comando é: <code>sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0cf1d041dea5dc917.efs.us-east-1.amazonaws.com:/ efs</code>.<br>
-  <li>No terminal da instância, crie um diretório que vai ser montado para receber os arquivos compartilhados. Para isso, use o comando <code>mkdir caminho_do_diretório</code>.<br>
-  <li>Execute o comando <code>sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0cf1d041dea5dc917.efs.us-east-1.amazonaws.com:/ caminho_do_diretório</code>. Troque ‘caminho_do_diretório’ para a pasta criada anteriormente.<br>
+  <li>No terminal da instância, crie um diretório que vai ser montado para receber os arquivos compartilhados. Para isso, use o comando <code>mkdir /home/ec2-user/nfs</code>. Neste exemplo, o diretório a ser montado é <code>nfs/</code> no caminho <code>/home/ec2-user</code><br>
+  <li>Execute o comando <code>sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0cf1d041dea5dc917.efs.us-east-1.amazonaws.com:/ /home/ec2-user/nfs</code>.<br>
   <li>Executando o comando <code>df -h</code>, deve-se ver o diretório montado corretamente. Aqui está um exemplo:<br><br>
 <table>
   <thead>
@@ -198,7 +198,7 @@ Este processo refere-se à criação de um NFS na instância EC2 executada anter
     </tr>
   </tbody>
 </table>
-  <li>Por fim, para criar um diretório com o seu nome dentro do NFS criado execute o comando <code>sudo mkdir caminho_do_diretório/seu_nome</code>.<br>
+  <li>Por fim, para criar um diretório com o seu nome dentro do NFS criado execute o comando <code>sudo mkdir /home/ec2-user/nfs/seu_nome</code>.<br>
 </ol>
 
 <div id="servidor_apache"><h4>Criando um servidor Apache:</h4><div>
