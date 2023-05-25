@@ -1,8 +1,12 @@
 # arquitetura_aws
 
-Este repositório contém a primeira atividade avaliativa do programa de estágio da Compass (PB 20/03/2023). Dentro da atividade proposta, o documento a seguir é o que compreende a parte prática do exercício, envolvendo conhecimentos em infraestrutura da Amazon Web Services (AWS) e Linux.
+Este repositório contém a primeira atividade avaliativa do programa de estágio da Compass (PB 20/03/2023). Dentro da atividade proposta, o documento a seguir é o que compreende a parte prática do exercício, envolvendo conhecimentos em infraestrutura da Amazon Web Services (AWS) e Linux.<br>
 
-<h3>Requisitos do exercício</h3>
+<h3>Tabela de conteúdos</h3>
+<a href="#req_exercicio">Requisitos do exercício<a><br>
+<a href="#inst_linux">Instalação do linux em uma máquina virtual<a><br>
+
+<div id="req_exercicio"><h3>Requisitos do exercício</h3><div>
 <h5>Requisitos AWS:</h5>
 <ul>
 <li>Gerar uma chave pública para acesso ao ambiente;<br>
@@ -211,8 +215,8 @@ Este processo refere-se à execução automatizada do <code>apache_status.sh</co
   <li>Clique na letra <code>i</code> para ativar a função de inserção e adicione o comando: <code>*/5 * * * * /bin/bash caminho_do_script.sh</code>. Neste caso, o caminho do script é <code>/home/ec2-user/apache_status.sh</code>.<br>
   <li>Execute o comando <code>sudo systemctl restart crond</code>, para reiniciar o serviço de automatização. Agora o script <code>apache_status.sh</code> deve ser executado automaticamente a cada 5 minutos.<br>
 </ol>
-            
-<h5>Instalação do linux em uma máquina virtual:</h5>
+
+<div id="inst_linux"><h5>Instalação do linux em uma máquina virtual:</h5><div>
 Este processo refere-se à instalação da distribuição Oracle Linux 8.7 (sem interface gráfica), na Oracle VirtualBox 7.0, em uma máquina rodando o sistema operacional Windows 11.<br>
 <ol>
   <li>Baixe e siga o processo de instalação do host para Windows do <a href="https://www.virtualbox.org/wiki/Downloads">Oracle VirtualBox 7.0</a>.<br>
