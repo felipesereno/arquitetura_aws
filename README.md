@@ -144,21 +144,47 @@ Este processo refere-se à configuração de regras de entrada no grupo de segur
         <td>443</td>
         <td>Qualquer local-IPv4</td>
       </tr>
+    </tbody>
    </table>
    <li>Após inseridas as 7 regras de entrada, clique em 'Salvar regras'.<br>
 </ol>
 
 <h5>Configurando um Network File System (NFS):</h5>
-Este processo refere-se à criação de um NFS na instância EC2 criada anteriormente e a configuração de um diretório a ser compartilhado.<br>
+Este processo refere-se à criação de um NFS na instância EC2 executada anteriormente.<br>
 <ol>
-  <li>No terminal Linux, utilize o comando <code>mkdir /home/ec2-user/nfs/</code> para criar o diretório a ser compartilhado, nesse caso, localizado na pasta <code>/ec2-user</code>.<br>
-  <li>Usando o comando <code>sudo yum update</code> atualize os pacotes instalados no sistema.<br>
-  <li>A instalação dos pacotes referentes ao NFS podem ser incluídos no sistema via: <code>sudo yum install nfs-utils</code>.<br>
-  <li>Para definir o diretório que será compartilhado, deve-se editar o arquivo <code>exports</code> no pasta <code>etc/</code> incluindo as informações: caminho_do_diretorio_compartilhado ip_da_instancia(rw,sync,no_subtree_check).<br>
-  <li>Use o comando <code>sudo systemctl restart nfs-server</code> para reiniciar o serviço.<br>
-  <li><code>systemctl status nfs</code> deve indicar que o serviço está ativo.<br>
-  <li>Para conferir quais diretórios estão sendo compartilhados verifique o retorno do comando <code>sudo exportfs -v</code>.<br>
-  <li>Por fim, para criar um diretório com o seu nome na pasta compartilhada, simplesmente execute o comando <code>mkdir /home/ec2-user/nfs/seu_nome/</code>.<br>
+<li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EFS' (Elastic File System). O termo 'EFS' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
+<li>Na coluna esquerda, clique em 'Sistemas de arquivos'. Depois, em ‘Criar sistema de arquivos’, no topo da página.<br>
+<li>Atribua um nome (opcional), selecione a Virtual Private Cloud (VPC) e clique em ‘Criar’.<br>
+<li>Nas informações do EFS criado, clique na aba ‘Rede’, logo abaixo da seção ‘Geral’. Clique em ‘Gerenciar’.<br>
+<li>Na seção ‘Destinos de montagem’, troque o grupo de segurança para o mesmo utilizado pela instância, para todas as zonas de disponibilidade listadas. Clique em ‘Salvar’.<br> 
+<li>Ainda na página de informações do NFS criado, clique em ‘Anexar’.<br>
+<li>Com a opção ‘Montar via DNS’ selecionada, copie o comando que aparece na seção ‘Usando o cliente do NFS:’. Um exemplo desse comando é: <code>sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0cf1d041dea5dc917.efs.us-east-1.amazonaws.com:/ efs</code>.<br>
+<li>No terminal da instância, crie um diretório que vai ser montado para receber os arquivos compartilhados. Para isso, use o comando <code>mkdir caminho_do_diretório</code>.<br>
+<li>Execute o comando <code>sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0cf1d041dea5dc917.efs.us-east-1.amazonaws.com:/ caminho_do_diretório</code>. Troque ‘caminho_do_diretório’ para a pasta criada anteriormente.<br>
+<li>Executando o comando <code>df -h</code>, deve-se ver o diretório montado corretamente. Aqui está um exemplo:<br><br>
+<table>
+  <thead>
+    <tr>
+      <th>Filesystem</th>
+      <th>Size</th>
+      <th>Used</th>
+      <th>Avail</th>
+      <th>Use%</th>
+      <th>Mounted on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fs-0cf1d041dea5dc917.efs.us-east-1.amazonaws.com:/</td>
+      <td>8.0E</td>
+      <td>0</td>
+      <td>8.0E</td>
+      <td>0%</td>
+      <td>/home/ec2-user/efs</td>
+    </tr>
+  </tbody>
+</table>
+<li>Por fim, para criar um diretório com o seu nome dentro do NFS criado execute o comando <code>sudo mkdir caminho_do_diretório/seu_nome</code>.<br>
 </ol>
 
 <h5>Criando um servidor Apache:</h5>
