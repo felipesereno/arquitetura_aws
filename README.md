@@ -6,7 +6,7 @@ Este repositório contém a primeira atividade avaliativa do programa de estági
   <li><a href="#req_exercicio">Requisitos do exercício</a><br>
   <li><a href="#exe_exercicio">Executando os requisitos do exercício</a><br>
   <ul>
-    <li><a href="#chave_publica">Gerando uma chave pública na AWS</a><br>
+    <li><a href="#chave_publica">Gerando uma chave pública para acesso ao ambiente da AWS</a><br>
     <li><a href="#ec2_web">Criando uma instância EC2 pela console web da AWS</a><br>
     <li><a href="#ec2_cli">Criando uma instância EC2 pela AWS CLI</a><br>
     <li><a href="#ip_elastico">Gerando um IP elástico e anexando à instância EC2</a><br>
@@ -16,6 +16,7 @@ Este repositório contém a primeira atividade avaliativa do programa de estági
     <li><a href="#status_apache">Criando um script de verificação do status do serviço Apache</a><br>
     <li><a href="#script">Preparando a execução automatizada do script a cada 5 minutos</a><br>
     <li><a href="#inst_linux">Instalando uma máquina virtual com sistema Linux</a><br>
+    <li><a href="#extra">Seção extra: Gerando um par de chaves para acesso à instância e transferência para a máquina virtual</a><br>
   </ul>
 </ul><br>
 
@@ -46,14 +47,24 @@ offline;<br>
 </ul>
 
 <div id="exe_exercicio"><h2>Executando os requisitos do exercício</h2><div>
-<div id="chave_publica"><h4>Gerando uma chave pública na AWS:</h4><div>
-Este processo refere-se à geração de um par de chaves no serviço de instâncias da AWS e, neste caso, é realizado através do console web.<br>
+<div id="chave_publica"><h4>Gerando uma chave pública para acesso ao ambiente da AWS:</h4><div>
+Este processo refere-se à geração de um usuário e grupo, configuração de suas políticas e criação de uma chave para acesso à conta.<br>
 <ol>
-  <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
-  <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'Pares de chaves'.<br>
-  <li>Para criar um par de chaves, clique no botão ('Criar par de chaves') no canto superior direito da página.<br>
-  <li>Atribua um nome, selecione o tipo de par de chaves, o formato do arquivo (.pem para OpenSSH e .ppk para uso com Putty) e uma tag (opcional).<br>
-  <li>Após finalizar a operação, salve o arquivo baixado em local seguro.
+  <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'IAM' (Identity and Access Management). O termo 'IAM' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
+  <li>Na coluna esquerda, na seção 'Gerenciamento de acesso', clique em 'Grupos de usuários'.<br>
+  <li>Clique em ‘Criar grupo’.<br>
+  <li>Atribua um nome ao novo grupo e na seção ‘Associar políticas de permissões’ marque a opção ‘AdministratorAccess’. Clique em ‘Criar grupo’. Essa política concede acesso de administrador aos usuários que forem adicionados a esse grupo.<br>
+  <li>Para criar um novo usuário e adicioná-lo ao grupo criado, clique em ‘Usuários’, na seção ‘Gerenciamento de acesso’ na coluna esquerda, ainda no serviço de IAM.<br>
+  <li>Clique em ‘Adicionar usuários’.<br>
+  <li>Adicione um nome para o usuário criado e clique em ‘Próximo’.<br>
+  <li>Nas ‘Opções de permissões’, selecione ‘Adicionar usuário ao grupo’. Na seção ‘Grupos de usuários’, selecione o grupo criado anteriormente e clique em ‘Próximo’.<br>
+  <li>Revise as configurações e clique em ‘Criar usuário’.<br>
+  <li>Para gerar uma chave pessoal basta clicar em  ‘Usuários’, na seção ‘Gerenciamento de acesso’ na coluna esquerda, ainda no serviço de IAM.<br>
+  <li>Clique no nome do usuário criado anteriormente.<br>
+  <li>Na página do usuário, abaixo da seção ‘Resumo’, clique na aba ‘Credenciais de segurança’. Em ‘Chaves de acesso’, clique em ‘Criar chave de acesso’.<br>
+  <li>Marque a opção ‘Command Line Interface (CLI)’ e, no fim da página, ‘Compreendo a recomendação acima e quero prosseguir para criar uma chave de acesso’. Clique em ‘Próximo’.<br>
+  <li>Defina uma etiqueta de descrição (opcional) e clique em ‘Criar chave de acesso’.<br>
+  <li>Armazene a ‘Chave de acesso’ e a ‘Chave de acesso secreta’, ou baixe o arquivo ‘.csv’ e clique em ‘Concluído’.<br>
 </ol>
 
 <div id="ec2_web"><h4>Criando uma instância EC2 pela console web da AWS:</h4><div>
@@ -66,38 +77,25 @@ Este processo refere-se à criação de uma instância EC2 com o sistema operaci
   <li>Em 'Nome e tags', adicione um nome para a instância e tags (opcional).<br>
   <li>Na seleção das imagens da aplicação, selecione o grupo 'Amazon Linux', especificamente 'Amazon Linux 2 Kernel 5.10 AMI 2.0.20230504.1 x86_64 HVM gp2'. O ID dessa AMI (Amazon Image) deve ser: ami-06a0cd9728546d178.<br>
   <li>No 'Tipo de instância', selecione 't3.small'.<br>
-  <li>Na sessão 'Par de chaves (login)', selecione o par de chaves criado anteriormente, ou gere um novo par para atribuir a essa instância.<br>
+  <li>Na sessão 'Par de chaves (login)', gere um novo par de chaves para acessar essa instância, ou selecione uma chave existente.<br>
+  <lil>Para gerar um novo par de chaves, clique no botão 'Criar novo par de chaves'. Atribua um nome, selecione o tipo, o formato do arquivo (.pem para OpenSSH e .ppk para uso com Putty) e uma tag (opcional). Após finalizar a operação, salve o arquivo baixado em local seguro.<br>
   <li>Na seção 'Configurações de rede', marque a opção 'Criar grupo de segurança', ou selecione um grupo já existente. Configurações específicas de rede para esse grupo serão feitas no requisito '<a href="#portas">Liberando as portas de comunicação da instância EC2 para acesso público</a>'.<br>
   <li>Na sessão 'Configurar armazenamento', selecione 16GB, tipo gp2 de volume raiz.<br>
   <li>Em 'Resumo', verifique as configurações selecionadas, certificando-se que o 'Número de instâncias' seja '1'. Clique no botão 'Executar instância'.<br>
 </ol>
 
 <div id="ec2_cli"><h4>Criando uma instância EC2 pela AWS CLI:</h4><div>
-De forma alternativa à seção '<a href="#ec2_web">Criando uma instância EC2 pela console web da AWS</a>', o processo referenciado aqui compreende à geração da mesma instância, porém, através da interface de linha de comando (CLI) da AWS. Para atender esse requisito as seguintes etapas serão necessárias: configuração da CLI, geração de um usuário e grupo, configuração de suas políticas, criação de uma chave secreta para acesso à conta e, por fim, execução da instância. 
+De forma alternativa à seção '<a href="#ec2_web">Criando uma instância EC2 pela console web da AWS</a>', o processo referenciado aqui compreende à geração da mesma instância, porém, através da interface de linha de comando (CLI) da AWS. Para atender esse requisito as seguintes etapas serão necessárias: configuração da CLI, geração de um usuário e grupo, configuração de suas políticas, criação de uma chave para acesso à conta e, por fim, execução da instância. 
 <ol>
   <li>Em um terminal linux, digite o comando <code>sudo yum update</code> para atualizar todos os pacotes do sistema.<br>
   <li>Baixe a CLI digitando <code>curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"</code>. Para mais informações sobre como fazer a instalação acesse a documentação da <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#cliv2-linux-install">AWS CLI</a>.<br>
   <li>Descompacte o arquivo baixado digitando <code>unzip awscliv2.zip</code>. Se o comando não funcionar, instale os pacotes correspondentes ao serviço unzip utilizando o comando <code>sudo yum install unzip</code>. Depois tente descompactar o arquivo novamente.<br>
   <li>Instale a CLI digitando o comando <code>sudo ./aws/install</code>.<br>
   <li>Após a instalação, certifique-se que o sistema consegue identificar o programa inserindo o comando <code>aws --v</code>. O retorno deve informar a versão de tudo o que foi instalado.<br>
-  <li>Para efetuar o acesso aos serviços da AWS através da CLI, antes é necessário gerar uma chave pessoal, que deve, posteriormente, ser informada nas configurações da interface. Como é preciso que se faça a atribuição de políticas de acesso para que o usuário, através de sua chave pessoal, execute os serviço, recomenda-se criar um grupo, atribuir políticas a ele e incluir esse usuário ao grupo.<br>
-  <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'IAM' (Identity and Access Management). O termo 'IAM' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
-  <li>Na coluna esquerda, na seção 'Gerenciamento de acesso', clique em 'Grupos de usuários'.<br>
-  <li>Clique em ‘Criar grupo’.<br>
-  <li>Atribua um nome ao novo grupo e na seção ‘Associar políticas de permissões’ filtre pela palavra ‘EC2’ e marque a opção ‘AmazonEC2FullAccess’. Clique em ‘Criar grupo’. Essa política concede acesso total a todos os serviços do EC2 aos usuários que forem adicionados a esse grupo.<br>
-  <li>Para criar um novo usuário e adicioná-lo ao grupo criado, clique em ‘Usuários’, na seção ‘Gerenciamento de acesso’ na coluna esquerda, ainda no serviço de IAM.<br>
-  <li>Clique em ‘Adicionar usuários’.<br>
-  <li>Adicione um nome para o usuário criado e clique em ‘Próximo’.<br>
-  <li>Nas ‘Opções de permissões’, selecione ‘Adicionar usuário ao grupo’. Na seção ‘Grupos de usuários’, selecione o grupo criado anteriormente e clique em ‘Próximo’.<br>
-  <li>Revise as configurações e clique em ‘Criar usuário’.<br>
-  <li>Para gerar uma chave pessoal basta clicar em  ‘Usuários’, na seção ‘Gerenciamento de acesso’ na coluna esquerda, ainda no serviço de IAM.<br>
-  <li>Clique no nome do usuário criado anteriormente.<br>
-  <li>Na página do usuário, abaixo da seção ‘Resumo’, clique na aba ‘Credenciais de segurança’. Em ‘Chaves de acesso’, clique em ‘Criar chave de acesso’.<br>
-  <li>Marque a opção ‘Command Line Interface (CLI)’ e, no fim da página, ‘Compreendo a recomendação acima e quero prosseguir para criar uma chave de acesso’. Clique em ‘Próximo’.<br>
-  <li>Defina uma etiqueta de descrição (opcional) e clique em ‘Criar chave de acesso’.<br>
-  <li>Armazene a ‘Chave de acesso’ e a ‘Chave de acesso secreta’, ou baixe o arquivo ‘.csv’ e clique em ‘Concluído’.<br>
-  <li>Para configurar a CLI com as credenciais de acesso à uma conta na AWS, digite, em um terminal linux, <code>aws configure</code>, informando o ID e chave de acesso secreta vinculada à conta, o código da região que se pretende manipular os serviços e o formato do retorno dos dados (recomenda-se json).<br>
+  <li>Para efetuar o acesso aos serviços da AWS através da CLI, antes é necessário gerar uma chave pessoal, que deve, posteriormente, ser informada nas configurações da interface. Como é preciso que se faça a atribuição de políticas de acesso para que o usuário, através de sua chave pessoal, execute os serviço, recomenda-se criar um grupo, atribuir políticas a ele e incluir esse usuário ao grupo. Este processo está documentado na seção '<a href="#chave_publica">Gerando uma chave pública para acesso ao ambiente da AWS</a>'.<br>
+  <li>Para configurar a CLI, digite, em um terminal linux, <code>aws configure</code>, informando o ID e chave de acesso secreta vinculada à conta, o código da região que se pretende manipular os serviços e o formato do retorno dos dados (recomenda-se json).<br>
   <li>O processo de execução de uma instância pode ser feito através do comando <code>aws ec2 run-instances --image-id ami-06a0cd9728546d178  --count 1 --instance-type t3.small --key-name nome_da_chave --block-device-mappings '[{"DeviceName":"/dev/xvda","Ebs":{"VolumeSize":16,"VolumeType":"gp2"}}]' --tag-specifications 'ResourceType=instance,Tags=[{Key="Name",Value="Nome da instância"}]'</code>. O comando deve ser executado no diretório que contém o arquivo do par de chaves (nome_da_chave).<br>
+  <li>Se o par de chaves ainda foi gerado, veja '<a href="#extra">Seção extra: Gerando um par de chaves para acesso à instância e transferência para a máquina virtual</a>'.<br>
 </ol>
 
 <div id="ip_elastico"><h4>Gerando um IP elástico e anexando à instância EC2:</h4><div>
@@ -111,7 +109,7 @@ Este processo refere-se à geração de um IP elástico e sua associação à um
 </ol>
 
 <div id="portas"><h4>Liberando as portas de comunicação da instância EC2 para acesso público:</h4><div>
-Este processo refere-se à configuração de regras de entrada no grupo de segurança criado anteriormente, neste caso, realizado através do console web. As regras de segurança são: 22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP.<br>
+Este processo refere-se à configuração de regras de entrada no grupo de segurança associado à instância, neste caso, realizado através do console web. As regras de segurança são: 22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP.<br>
 <ol>
   <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2'. O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
   <li>Na coluna esquerda, na seção 'Rede e segurança', clique em 'Security groups'.<br>
@@ -243,3 +241,15 @@ Este processo refere-se à instalação da distribuição Oracle Linux 8.7 (sem 
   <li>Depois de revisar as configurações, clique em 'Begin Installation'.<br>
   <li>Finalizado o processo de instalação, clique em 'Reboot System'.<br>
 </ol>
+  
+<div id="extra"><h4>Seção extra: Gerando um par de chaves para acesso à instância e transferência para a máquina virtual:</h4><div>
+Este processo refere-se à geração de um par de chaves no serviço EC2 e transferência do arquivo para a máquina virtual com linux.<br>
+<ol>
+  <li>No console web da AWS, através do menu 'Serviços', no canto superior esquerdo, acesse o serviço de 'EC2' (Elastic Compute Cloud). O termo 'EC2' também pode ser buscado através da barra de pesquisa, no topo da página.<br>
+  <li>Na coluna esquerda, na sessão 'Redes e segurança', clique em 'Pares de chaves'.<br>
+  <li>Para criar um par de chaves, clique no botão ('Criar par de chaves') no canto superior direito da página.<br>
+  <li>Atribua um nome, selecione o tipo de par de chaves, o formato do arquivo (.pem para OpenSSH e .ppk para uso com Putty) e uma tag (opcional).<br>
+  <li>Após finalizar a operação, salve o arquivo baixado em local seguro.
+  <li>Para tranferir o arquivo baixado do sistema Windows para a máquina virtual com Linux, digite, no terminal PowerShell, o comando <code>scp C:\caminho\chave\no\windows usuário_linux@ipv4_público_linux:/caminho/destino/linux</code>.<br>
+</ol>
+
