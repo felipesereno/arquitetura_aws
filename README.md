@@ -214,14 +214,15 @@ Este processo refere-se à instalação de um servidor Apache na instância EC2 
 <div id="status_apache"><h4>Criando um script de verificação do status do serviço Apache:</h4><div>
 Este processo refere-se à criação de um 'shell script' que tem a função de automatizar a verificação do status do serviço Apache gerado anteriormente.<br>
 <ol>
-  <li>O arquivo <code>apache_status.sh</code>, contido nesse repositório, tem a função de verificar o status do serviço <code>httpd</code>(Apache) e armazenar mensagens de log no diretório <code>/nfs</code>.<br>
+  <li>Para inserir o script na instância, execute o comando <code>touch /home/ec2-user/apache_status.sh</code>. Edite o arquivo criado digitando <code>vim /home/ec2-user/apache_status.sh</code> e cole o conteúdo do script presente neste repositório.<br>
+  <li>O arquivo <code>apache_status.sh</code>, tem a função de verificar o status do serviço <code>httpd</code>(Apache) e armazenar mensagens de log no diretório <code>/nfs</code>.<br>
   <li>O script possui a funcionalidade de criar os arquivos de log, caso ainda não existam, e adicionar a mensagem "Data-hora (fuso horário de São Paulo) + APACHE + ONLINE + SERVIDOR WEB ATIVO.", caso o serviço esteja ativo, e "Data-hora (fuso horário de São Paulo) + APACHE + OFFLINE + SERVIDOR WEB INATIVO.", caso contrário.<br>
 </ol>
     
 <div id="script"><h4>Preparando a execução automatizada do script a cada 5 minutos:</h4><div>
 Este processo refere-se à execução automatizada do <code>apache_status.sh</code> a cada 5 minutos.<br>
 <ol>
-  <li>Execute o comando <code>crontab -e</code> para abrir, em modo de edição, o arquivo que armazena os scripts de automatização do sistema.<br>
+  <li>Execute o comando <code>sudo crontab -e</code> para abrir, em modo de edição, o arquivo que armazena os scripts de automatização do sistema.<br>
   <li>Clique na letra <code>i</code> para ativar a função de inserção e adicione o comando: <code>*/5 * * * * /bin/bash caminho_do_script.sh</code>. Neste caso, o caminho do script é <code>/home/ec2-user/apache_status.sh</code>.<br>
   <li>Execute o comando <code>sudo systemctl restart crond</code>, para reiniciar o serviço de automatização. Agora o script <code>apache_status.sh</code> deve ser executado automaticamente a cada 5 minutos.<br>
 </ol>
