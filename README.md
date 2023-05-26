@@ -241,6 +241,7 @@ Este processo refere-se à instalação da distribuição Oracle Linux 8.7 (sem 
   <li>Na interface gráfica de instalação, deve-se atentar a algumas configurações importantes, como linguagem do teclado (br), seleção do software (server), rede (seleção da interface caso a máquina conecte-se a internet), definição de senha para o root e criação de um usuário comum do sistema.<br>
   <li>Depois de revisar as configurações, clique em 'Begin Installation'.<br>
   <li>Finalizado o processo de instalação, clique em 'Reboot System'.<br>
+  <li>Por último, recomenda-se colocar a interface de rede da máquina virtual em modo bridge (ponte). Para isso, no gerenciador de virtualizações do VirtualBox (página inicial do programa), selecione a máquina que deseja alterar as configurações na coluna esquerda. Clique em 'Configurações', no topo da página. Na janela de configurações, selecine a seção 'Rede', na coluna esquerda. Na aba 'Adaptador 1', com a caixa de seleção 'Habilitar Placa de Rede' marcada, selecine 'Placa em modo Bridge', na seção 'Conectado a:'. Clique em 'Ok' para salvar a alteração. Agora, a máquina pode ser iniciada com a nova configuração.<br>
 </ol>
   
 <div id="extra"><h4>Seção extra: Gerando um par de chaves para acesso à instância e transferência para a máquina virtual:</h4><div>
