@@ -198,6 +198,7 @@ Este processo refere-se à criação de um NFS na instância EC2 executada anter
     </tr>
   </tbody>
 </table>
+  <li>Para configurar a montagem automática do diretório quando a máquina é iniciada, execute o comando <code>sudo vim /etc/fstab</code> e adicione a linha <code>fs-0cf1d041dea5dc917.efs.us-east-1.amazonaws.com:/ /home/ec2-user/nfs nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 0 0</code>.<br>
   <li>Por fim, para criar um diretório com o seu nome dentro do NFS criado execute o comando <code>sudo mkdir /home/ec2-user/nfs/seu_nome</code>.<br>
 </ol>
 
@@ -209,6 +210,7 @@ Este processo refere-se à instalação de um servidor Apache na instância EC2 
   <li>Para iniciar o servidor digite <code>sudo systemctl start httpd</code>.<br>
   <li>Para verificar se o serviço está ativo utiliza-se o comando <code>systemctl status httpd</code>. O status deve estar ativo.<br>
   <li>Outra forma de verificar a disponibilidade do servidor é informando o endereço IP da instância na barra URL do navegador. Uma página de testes do Apache deve aparecer.<br>
+  <li>Por último, para configurar a inicialização automática do serviço Apache com o sistema operacional, basta executar o comando <code>sudo systemctl enable httpd</code>.
 </ol>
 
 <div id="status_apache"><h4>Criando um script de verificação do status do serviço Apache:</h4><div>
